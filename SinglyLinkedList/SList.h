@@ -26,8 +26,20 @@ void SList<T>::remove(SListIterator<T> iter)
 template <class T>
 void SList<T>::insert(SListIterator<T> iter, T data)
 {
-	
-
+	if (iter.list != this )
+	{
+		return;
+	}
+	if (!iter.isValid() || head == nullptr)
+	{
+		append(data);
+	}
+	else
+	{
+		iter.currentNode->insertAfter(data);
+		if (iter.currentNode == tail)
+			tail = iter.currentNode->getNext();
+	}
 }
 
 template <class T>

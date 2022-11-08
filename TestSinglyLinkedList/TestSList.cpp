@@ -174,12 +174,13 @@ namespace TestSinglyLinkedList
 		{
 			SList<int> list;
 			list.append(1);
+			list.append(2);
 			SListIterator<int> iter = list.getIterator();
-
-			list.insert(iter, 2);
+			iter.advance();
+			list.insert(iter, 3);
 			Assert::AreEqual(1, list.head->getData());
 			Assert::AreNotSame(*list.head, *list.tail);
-			Assert::AreEqual(2, list.tail->getData());
+			Assert::AreEqual(3, list.tail->getData());
 
 
 		}
