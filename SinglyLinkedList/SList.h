@@ -38,7 +38,18 @@ SListIterator<T> SList<T>::getIterator()
 template <class T>
 void SList<T>::removeHead()
 {
-	
+	if (head == nullptr)
+	{
+		return;
+	}
+	else
+	{
+		SListNode<T>* temp = head;
+		head = head->getNext();
+		delete temp;
+		if (head == nullptr)
+			tail = nullptr;
+	}
 }
 
 template <class T>
