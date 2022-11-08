@@ -55,7 +55,26 @@ void SList<T>::removeHead()
 template <class T>
 void SList<T>::removeTail()
 {
-
+	if (head == nullptr)
+	{
+		return;
+	}
+	if (head == tail)
+	{
+		delete head;
+		head = tail = nullptr;
+	}
+	else
+	{
+		SListNode<T>* temp = head;
+		while (temp->getNext() != tail)
+		{
+			temp = temp->getNext();
+		}
+		delete tail;
+		tail = temp;
+		tail->setNext(nullptr);
+	}
 }
 template <class T>
 SList<T>::SList()
